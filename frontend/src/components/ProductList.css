@@ -1,0 +1,142 @@
+/* src/pages/ProductList.css */
+
+body {
+  background-color: #f9f9f9;
+
+}
+
+.product-listing-page {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Avenir', sans-serif;
+  color: #333;
+}
+
+.product-listing-page h1 {
+  text-align: center;
+  margin-bottom: 100px;
+  margin-top: 30px;
+  color: #444;
+  font-size: 45px;
+  font-weight:lighter;
+  font-family: 'Avenir', sans-serif;
+  display:inline-block;
+  border-bottom: 0px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.font-note {
+  text-align: right;
+  font-size: 0.75em;
+  color: #aaa;
+  margin-top: -25px;
+  margin-bottom: 20px;
+  font-family: 'Avenir', sans-serif;
+}
+
+/* Scroll alanı */
+.scroll-wrapper {
+  position: relative;
+  padding: 0;
+}
+
+.horizontal-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  gap: 20px;
+  padding: 10px 0;
+}
+
+.horizontal-scroll-container::-webkit-scrollbar {
+  height: 20px;
+}
+
+.horizontal-scroll-container::-webkit-scrollbar-thumb {
+  background-color: #636060;
+  border-radius: 8px;
+}
+
+.horizontal-scroll-container::-webkit-scrollbar-track {
+  background-color: #6b6a6a; /* arka plan */
+}
+
+.product-card {
+  flex: 0 0 250px;
+  scroll-snap-align: start;
+  
+}
+
+/* Scroll yön butonları */
+.scroll-button {
+  position: absolute;
+  top: 30%;
+  transform: translateY(-50%);
+  background-color: #f9f9f9;
+  border: none;
+  color: #333;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.scroll-button.left {
+  left: -50px;
+}
+
+.scroll-button.right {
+  right: -50px;
+}
+
+@media (max-width: 768px) {
+  .scroll-button {
+    display: none;
+  }
+}
+
+/* Yükleme / hata mesajları */
+.product-listing-page .loading-message,
+.product-listing-page .error-message,
+.product-listing-page .no-products-message {
+  text-align: center;
+  font-size: 1.2em;
+  color: #555;
+  margin-top: 50px;
+}
+
+.product-listing-page .error-message {
+  color: #d9534f;
+  font-weight: bold;
+}
+
+/* Grid görünümü alternatif olarak bırakıldı ama yatay scroll aktifse kullanılmaz */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  justify-content: center;
+}
+
+/* Responsive grid desteği */
+@media (min-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1440px) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
