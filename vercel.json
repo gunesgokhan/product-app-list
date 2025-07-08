@@ -26,10 +26,5 @@
   "installCommand": "npm install --prefix product-app-list/frontend && npm install --prefix product-app-list/backend",
   "buildCommand": "npm run build --prefix product-app-list/frontend",
   "outputDirectory": "product-app-list/frontend/build",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/product-app-list/frontend/build/$1"
-    }
-  ]
+  
 }
