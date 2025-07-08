@@ -1,0 +1,35 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "product-app/frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "outputDirectory": "build"
+      }
+    },
+    {
+      "src": "product-app/backend/index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/product-app/backend/index.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/product-app/frontend/build/$1"
+    }
+  ],
+  "installCommand": "npm install --prefix product-app/frontend && npm install --prefix product-app/backend",
+  "buildCommand": "npm run build --prefix product-app/frontend",
+  "outputDirectory": "product-app/frontend/build",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/product-app/frontend/build/$1"
+    }
+  ]
+}
